@@ -1,0 +1,92 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>AQI for Seattle</title>
+<link rel="stylesheet" href="style.css">    
+    
+    
+    <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script><!-- latest jQuery script -->
+    
+    </head>
+
+    
+<body>
+    
+<div id="wrapper">
+    
+<h1>AQI for Seattle:</h1>
+
+<p>Click on number for more info:</p>  
+    
+<p>NOTE: Olive Street doesn't give reliable readings; click on it for more details. Thanks.</p>    
+    
+<script  type="text/javascript"  charset="utf-8">  
+    (function(w,d,t,f){  w[f]=w[f]||function(c,k,n){s=w[f],k=s['k']=(s['k']||(k?('&k='+k):''));s['c']=  
+    c=(c  instanceof  Array)?c:[c];s['n']=n=n||0;L=d.createElement(t),e=d.getElementsByTagName(t)[0];  
+    L.async=1;L.src='//feed.aqicn.org/feed/'+(c[n].city)+'/'+(c[n].lang||'')+'/feed.v1.js?n='+n+k;  
+    e.parentNode.insertBefore(L,e);  };  })(  window,document,'script','_aqiFeed'  );    
+</script>
+    
+<span  id="city-aqi-container"></span>  
+  
+<script  type="text/javascript"  charset="utf-8">  
+    _aqiFeed({  container:"city-aqi-container",  city:"usa/washington/seattle/10th-and-weller/"  });  
+</script>
+    
+<div  id='my-container'></div>  
+<script  type="text/javascript"  charset="utf-8">  
+/* _aqiFeed({  city:"London",  lang:"en",  callback:function(aqi){  
+  $("#my-container").html(aqi.details);  
+}  }); */  
+</script>
+    
+        
+<div  id='mutiple-city-aqi'></div>  
+<script  type="text/javascript"  charset="utf-8">  
+     
+var  cities  =  ["usa/washington/puyallup/128th-st/", "usa/washington/seattle/beacon-hill/", "usa/washington/seattle/south-park/", "usa/washington/seattle/duwamish/", "usa/washington/seattle/olive-st/", "London"];  
+  
+var  aqiWidgetConfig  =  [];    
+cities.forEach(function(city)  {  aqiWidgetConfig.push({city:city,  callback:  displayCity});  });  
+_aqiFeed(aqiWidgetConfig);  
+  
+/* function  displayCity(aqi)  {  
+  $("#mutiple-city-aqi").append(aqi.text("<center>%cityname<br>%aqi<br><small>%date</small></center>"));  
+}  */   
+
+/* function  displayCity(aqi)  {  
+  $("#mutiple-city-aqi").append(aqi.text("%cityname<br>%details<br>"));  
+} */    
+
+
+function  displayCity(aqi)  {  
+    $("#mutiple-city-aqi").append(aqi.text("<div style='%style;max-width:180px;text-align:left; padding:5px; padding-bottom: 50px; border: 2px black solid;'><small>%cityname AQI on %date:</small><br>%impact</br><div style='font-size:88px;height:60px;padding-top:20px;'>%aqiv</div></div>"));  
+}        
+    
+    
+</script>
+    
+</div>    
+    
+    
+<p>AQI data came from the following agencies:</p>    
+    
+<li>    
+<a href="http://wxqa.com/" target="__s">Citizen Weather Observer Program (CWOP/APRS)</a>
+</li>    
+
+<li>    
+<a href="http://www.ecy.wa.gov/" target="__s">Washington State Department of Ecology</a>
+</li>
+    
+<li>    
+<a href="http://www.airnow.gov/" target="__s">Air Now - US EPA</a>
+</li> 
+    
+<br />    
+<small>Copyright 2017 Dwayne Linde</small>    
+    
+
+</body>
+</html>
